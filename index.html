@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Santa Ana Auzoa</title>
+    <link rel="stylesheet" href="estilos.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header class="cabecera">
+    <h1>🌿 Barrio Santa Ana</h1>
+    <p></p>
+
+    <div class="tabs">
+        <button class="tablink" onclick="abrirTab(event, 'inicio')" id="defaultOpen">🏠 Inicio</button>
+        <button class="tablink" onclick="abrirTab(event, 'eventos')">📅 Eventos</button>
+        <button class="tablink" onclick="abrirTab(event, 'fotos')">📷 Fotos</button>
+        <button class="tablink" onclick="abrirTab(event, 'mapa')">🗺️ Mapa</button>
+    </div>
+</header>
+
+<!-- INICIO -->
+<div id="inicio" class="tabcontent">
+    <h2>Bienvenido 👋</h2>
+    <p>Esta web recoge historias, fotos y información del barrio.</p>
+
+    <div class="bloque">
+        <h3>🧑‍🤝‍🧑 Últimas noticias</h3>
+        <ul>
+            <li>Nuevo parque infantil inaugurado</li>
+            <li>Fiestas del barrio el próximo sábado</li>
+            <li>Recogida de fotos antiguas (años 70-90)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- EVENTOS -->
+<div id="eventos" class="tabcontent">
+    <h2>📅 Ekitaldiak</h2>
+<div class="evento">
+        <h3>Paseo colectivo</h3>
+        <p><strong>Fecha:</strong> 11/05/2026</p>
+        <p>Un recorrido por el barrio con la mirada puesta en nuestras necesidades y posibles mejoras</p>
+		<p><button class="tablink" onclick="abrirTab(event, 'paseo')">🏠 Necesidades detectadas</button></p>
+    </div>
+    <div class="evento">
+        <h3>Bilera</h3>
+        <p><strong>Fecha:</strong> 27/04/2026</p>
+        <p><a href="aktak/akta_bilera_2704.pdf" target="_blank">Acta de la reunión</a></p>
+    </div>
+
+</div>
+
+<!-- FOTOS -->
+<div id="fotos" class="tabcontent">
+    <h2>📷 Fotos del barrio</h2>
+
+    <div class="galeria">
+        <a href="https://via.placeholder.com/800x500" target="_blank">
+            <img src="https://via.placeholder.com/300x200" alt="foto1">
+        </a>
+
+        <a href="https://via.placeholder.com/800x500" target="_blank">
+            <img src="https://via.placeholder.com/300x200" alt="foto2">
+        </a>
+
+        <a href="https://via.placeholder.com/800x500" target="_blank">
+            <img src="https://via.placeholder.com/300x200" alt="foto3">
+        </a>
+    </div>
+</div>
+
+<!-- MAPA -->
+<div id="mapa" class="tabcontent">
+    <h2>🗺️ Lugares del barrio</h2>
+
+    <p>Puntos destacados del barrio:</p>
+    <ul>
+        <li>🏫 Colegio público</li>
+        <li>🌳 Parque central</li>
+        <li>☕ Bar de la plaza</li>
+    </ul>
+
+    <iframe 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-2.70%2C42.83%2C-2.65%2C42.86&layer=mapnik" 
+        class="mapa">
+    </iframe>
+</div>
+
+<!-- PASEO -->
+<div id="paseo" class="tabcontent">
+    <h2>Necesidades detectadas</h2>
+<div class="evento">
+        <h3>San Isidro</h3>
+		<ul>
+		<li><b>Nº 15</b>: Este portal no es accesible. No hay rampa que permita el acceso para personas con movilidad reducida. <a href="#img1">(Ver foto)</a>
+		
+
+
+<!--estoy probando imagen en movil-->
+
+<img src="img/sanisidro_15_tx.jpg" onclick="abrir(this.src)">
+
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black;">
+    <span onclick="cerrar()" style="color:white; font-size:30px;">×</span>
+    <img id="imgModal" style="width:90%; margin:auto; display:block;">
+</div>
+
+<script>
+function abrir(src){
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('imgModal').src = src;
+}
+function cerrar(){
+    document.getElementById('modal').style.display = 'none';
+}
+</script>
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="img1" class="modal">
+    <a href="#" class="cerrar">×</a>
+
+    <div class="modal-contenido">
+        <img src="img/sanisidro_15_tx.jpg">
+    </div>
+</div>
+</li>
+
+
+
+
+
+
+	<li><b>Nº 13</b>: Este portal no es accesible sin salir a la carretera. No hay rampa (o escaleras o carretera). <a href="#img2">(Ver foto)</a>
+		
+
+<div id="img2" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanisidro_13_tx.jpg">
+    </a></li>
+	<li><b>Nº 9-7 y 5-3</b>: Apaingarri begetalak. Hay espacios utilizados por la gente, pero algún adorno vegetal le daría otro color sin mucha inversión.</li>
+	<li><b>Goienkale-San Isidro eta San Isidro-San Roke eskilarak</b>: Suciedad. Se solicita que se limpien con mayor frecuencia.<a href="#img3">(Ver foto)</a>
+		
+
+<div id="img3" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanisidro_escaleras.jpg">&nbsp;<img src="img/sanisidro_escaleras2.jpg">&nbsp;<img src="img/sanisidro_escaleras1.jpg">
+    </a></li>
+	<li><b>Goienkale-San Isidro eta San Isidro-San Roke igogailuak</b>: 
+	<ul class="sin-gap">
+	<li>Suciedad. Se solicita que se limpien con mayor frecuencia.</li>
+	<li>Decoración. Se solicita embellecer los ascensores con grafitis o cualquier otra solución. <a href="#img4">(Ver foto)</a>
+		
+
+<div id="img4" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanisidro_ascensor_tx.jpg">
+    </a>
+	</li>
+	</ul>
+	</li>
+	<li><b>San Isidroko sarrera</b>: Necesita un arreglo integral del pavimento.
+	</li>
+	</ul>
+	</div>
+<div class="evento">
+<h3>San Isidro - San Roke - Santa Ana</h3>
+		<ul>
+		<li><b>Lotura hobetu</b>: Crear un acceso que sustituya a las actuales escaleras empinadas y estrechas mediante una pasarela sin escaleras enlazando así con la plaza de Sakona. <a href="#img5">(Ver foto)</a>
+		
+
+<div id="img5" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanisidro_sanroke_santana.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana2.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana1.jpg">
+    </a></li>
+</div>
+</ul>
+<div class="evento">
+<h3>San Roke</h3>
+		<ul>
+		<li><b>Nº 15</b>: La accesibilidad de este portal es "cuestionable". Existe una rampa, pero sin barandillas y, en ocasiones, invadida por un coche aparcado. <a href="#img6">(Ver foto)</a>
+		
+
+<div id="img6" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_15_1_tx.jpg">&nbsp;<img src="img/sanroke_15_tx.jpg">
+    </a></li>
+	<li><b>Nº 3</b>: Curva peligrosa. Hay poca visibilidad para los coches que vienen de San Roke como para la gente de Santa Ana 1. En el lugar de las cámaras estaría bien un espejo concavo. <a href="#img7">(Ver foto)</a>
+		
+
+<div id="img7" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_santana1.jpg">&nbsp;<img src="img/sanroke_santana.jpg">
+    </a></li>
+	
+<li><b>Nº 1</b>: Paso de cebra hasta la carnicería. Pasarelatik datozen eta Santa Ana 1era doazen oinezkoek La Cabañaraino joan behar ez dezaten. <a href="#img8">(Ver foto)</a>
+		
+
+<div id="img8" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_1_1_tx.jpg">&nbsp;<img src="img/sanroke_1_tx.jpg">
+    </a></li>
+<li><b>Paso de cebra de La Cabaña</b>: Poner una señal luminosa para aumentar la visibilidad y mejorar el paso a la acera <a href="#img9">(Ver foto)</a>
+		
+
+<div id="img9" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_cabana_tx.jpg">
+    </a></li>
+<li><b>Berdegune infrautilizado frente a La Cabaña</b>: Estudiar la posibilidad de hacer aparcamientos debajo y encima un parque accesible. <a href="#img10">(Ver foto)</a>
+		
+
+<div id="img10" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_berdegune_tx.jpg">
+    </a></li>
+<li><b>San Roke plazatxoa</b>: Hacerlo definitiva, ampliarla quitando la rampa (innecesaria al estar peatonalizado) y dotarla de sombras. <a href="#img11">(Ver foto)</a>
+		
+
+<div id="img11" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_plaza.jpg">&nbsp;<img src="img/sanroke_plaza1.jpg">
+    </a></li>
+<li><b>Igogailua</b>: Hacerle una 2ª planta y unirla mediante una pasarela con Santa Ana 1 <a href="#img12">(Ver foto)</a>
+		
+
+<div id="img12" class="modal">
+    
+<!-- Botón cerrar -->
+    <a href="#" class="cerrar">&times;</a>
+
+        <img src="img/sanroke_santana_ascensor.jpg">
+    </a></li>
+
+</div>
+</ul>
+
+
+
+
+</div>
+
+<script>
+function abrirTab(evt, nombreTab) {
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    let tablinks = document.getElementsByClassName("tablink");
+
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    document.getElementById(nombreTab).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
