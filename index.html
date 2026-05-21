@@ -17,21 +17,20 @@
         <button class="tablink" onclick="abrirTab(event, 'inicio')" id="defaultOpen">🏠 Hasiera</button>
         <button class="tablink" onclick="abrirTab(event, 'eventos')">📅 Ekitaldiak</button>
 		<button class="tablink" onclick="abrirTab(event, 'aktak')">🗺️ Aktak</button>
-        <button class="tablink" onclick="abrirTab(event, 'fotos')">📷 Argazkiak</button>
+        <!--<button class="tablink" onclick="abrirTab(event, 'fotos')">📷 Argazkiak</button>-->
     </div>
 </header>
 
 <!-- INICIO -->
 <div id="inicio" class="tabcontent">
-    <h2>Bienvenido 👋</h2>
-    <p>Esta web recoge historias, fotos y información del barrio.</p>
+    <h2>Auzoa eginez... Gure auzoari buelta ematen! </h2>
+    <p></p>
 
     <div class="bloque">
-        <h3>🧑‍🤝‍🧑 Últimas noticias</h3>
+        <h3>🧑‍🤝‍🧑 Destacado</h3>
+		<h2><a href="#" class="tablink" onclick="abrirTab(event, 'paseo')">Gure borrokak... Nuestras necesidades</a></h2>
         <ul>
-            <li>Nuevo parque infantil inaugurado</li>
-            <li>Fiestas del barrio el próximo sábado</li>
-            <li>Recogida de fotos antiguas (años 70-90)</li>
+            <li><a href="aktak/akta_bilera_2704.pdf" target="_blank">Acta de la última reunión</a></li>
         </ul>
     </div>
 </div>
@@ -39,7 +38,7 @@
 <!-- EVENTOS -->
 <div id="eventos" class="tabcontent">
     <h2>📅 Hurrengoa</h2>
-    <div class="evento">
+    <div class="evento_destacado">
         <h3>Bilera</h3>
         <p><strong>Fecha:</strong> 25/05/2026</p>
         <p>Lobianon</p>
@@ -50,12 +49,11 @@
         <h3>Paseo colectivo</h3>
         <p><strong>Fecha:</strong> 11/05/2026</p>
         <p>Un recorrido por el barrio con la mirada puesta en nuestras necesidades y posibles mejoras</p>
-		<p><button class="tablink" onclick="abrirTab(event, 'paseo')">🏠 Necesidades detectadas</button></p>
+		<p><button class="tablink" onclick="abrirTab(event, 'paseo')">🏠 <b><u>Necesidades detectadas</u></b></button></p>
     </div>
     <div class="evento">
         <h3>Bilera</h3>
         <p><strong>Fecha:</strong> 27/04/2026</p>
-        <p><a href="aktak/akta_bilera_2704.pdf" target="_blank">Acta de la reunión</a></p>
     </div>
 
 </div>
@@ -80,20 +78,12 @@
 </div>
 
 <!-- AKTAK -->
-<div id="mapa" class="tabcontent">
-    <h2>🗺️ Actas de las reuniones</h2>
-
-    <p>Puntos destacados del barrio:</p>
-    <ul>
-        <li>🏫 Colegio público</li>
-        <li>🌳 Parque central</li>
-        <li>☕ Bar de la plaza</li>
-    </ul>
-
-    <iframe 
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-2.70%2C42.83%2C-2.65%2C42.86&layer=mapnik" 
-        class="mapa">
-    </iframe>
+<div id="aktak" class="tabcontent">
+    <div class="evento">
+        <h3>Bilera</h3>
+        <p><strong>Fecha:</strong> 27/04/2026</p>
+        <p><a href="aktak/akta_bilera_2704.pdf" target="_blank">Acta de la reunión</a></p>
+    </div>
 </div>
 
 <!-- PASEO -->
@@ -102,7 +92,7 @@
 <div class="evento">
         <h3>San Isidro</h3>
 		<ul>
-		<li><b>Nº 15</b>: Este portal no es accesible. No hay rampa que permita el acceso para personas con movilidad reducida. <a href="#img1">(Ver foto)</a>
+		<li><b>Nº 15</b>: Este portal no es accesible. No hay rampa que permita el acceso para personas con movilidad reducida. <a href="#img1">(Ikusi argazkia)</a>
 			<div id="img1" class="modal">
 			<!-- Botón cerrar -->
 				<a href="#" class="cerrar">[X] Itxi</a>
@@ -111,7 +101,7 @@
 				</div>
 			</div>
 		</li>
-	<li><b>Nº 13</b>: Este portal no es accesible sin salir a la carretera. No hay rampa (o escaleras o carretera). <a href="#img2">(Ver foto)</a>
+		<li><b>Nº 13</b>: Este portal no es accesible sin salir a la carretera. No hay rampa (o escaleras o carretera). <a href="#img2">(Ikusi argazkia)</a>
 			<div id="img2" class="modal">
 			<!-- Botón cerrar -->
 				<a href="#" class="cerrar">[X] Itxi</a>
@@ -119,131 +109,178 @@
 				<img src="img/sanisidro_13_tx.jpg">
 				</div>
 			</div>
-    </a></li>
-	<li><b>Nº 9-7 y 5-3</b>: Apaingarri begetalak. Hay espacios utilizados por la gente, pero algún adorno vegetal le daría otro color sin mucha inversión.</li>
-	<li><b>Goienkale-San Isidro eta San Isidro-San Roke eskilarak</b>: Suciedad. Se solicita que se limpien con mayor frecuencia.<a href="#img3">(Ver foto)</a>
-		
-
-<div id="img3" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanisidro_escaleras.jpg">&nbsp;<img src="img/sanisidro_escaleras2.jpg">&nbsp;<img src="img/sanisidro_escaleras1.jpg">
-    </a></li>
-	<li><b>Goienkale-San Isidro eta San Isidro-San Roke igogailuak</b>: 
-	<ul class="sin-gap">
-	<li>Suciedad. Se solicita que se limpien con mayor frecuencia.</li>
-	<li>Decoración. Se solicita embellecer los ascensores con grafitis o cualquier otra solución. <a href="#img4">(Ver foto)</a>
-		
-
-<div id="img4" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanisidro_ascensor_tx.jpg">
-    </a>
-	</li>
-	</ul>
-	</li>
-	<li><b>San Isidroko sarrera</b>: Necesita un arreglo integral del pavimento.
-	</li>
-	</ul>
-	</div>
-<div class="evento">
-<h3>San Isidro - San Roke - Santa Ana</h3>
-		<ul>
-		<li><b>Lotura hobetu</b>: Crear un acceso que sustituya a las actuales escaleras empinadas y estrechas mediante una pasarela sin escaleras enlazando así con la plaza de Sakona. <a href="#img5">(Ver foto)</a>
-		
-
-<div id="img5" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanisidro_sanroke_santana.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana2.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana1.jpg">
-    </a></li>
+		</li>
+		<li><b>Nº 9-7 y 5-3</b>: Apaingarri begetalak. Hay espacios utilizados por la gente, pero algún adorno vegetal le daría otro color sin mucha inversión.</li>
+		<li><b>Goienkale-San Isidro eta San Isidro-San Roke eskilarak</b>: Suciedad. Se solicita que se limpien con mayor frecuencia.<a href="#img3">(Ikusi argazkia)</a>
+			<div id="img3" class="modal">
+			<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanisidro_escaleras.jpg">&nbsp;<img src="img/sanisidro_escaleras2.jpg">&nbsp;<img src="img/sanisidro_escaleras1.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>Goienkale-San Isidro eta San Isidro-San Roke igogailuak</b>: 
+			<ul class="sin-gap">
+				<li>Suciedad. Se solicita que se limpien con mayor frecuencia.</li>
+				<li>Decoración. Se solicita embellecer los ascensores con grafitis o cualquier otra solución. <a href="#img4">(Ikusi argazkia)</a>
+			<div id="img4" class="modal">
+			<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanisidro_ascensor_tx.jpg">
+				</div>
+			</div>
+				</li>
+			</ul>
+		</li>
+		<li><b>San Isidroko sarrera</b>: Necesita un arreglo integral del pavimento.</li>
+		</ul>
 </div>
-</ul>
+<div class="evento">
+	<h3>San Isidro - San Roke - Santa Ana</h3>
+	<ul>
+		<li><b>Lotura hobetu</b>: Crear un acceso que sustituya a las actuales escaleras empinadas y estrechas mediante una pasarela sin escaleras enlazando así con la plaza de Sakona. <a href="#img5">(Ikusi argazkia)</a>
+			<div id="img5" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanisidro_sanroke_santana.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana2.jpg">&nbsp;<img src="img/sanisidro_sanroke_santana1.jpg">
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
 <div class="evento">
 <h3>San Roke</h3>
-		<ul>
-		<li><b>Nº 15</b>: La accesibilidad de este portal es "cuestionable". Existe una rampa, pero sin barandillas y, en ocasiones, invadida por un coche aparcado. <a href="#img6">(Ver foto)</a>
-		
-
-<div id="img6" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_15_1_tx.jpg">&nbsp;<img src="img/sanroke_15_tx.jpg">
-    </a></li>
-	<li><b>Nº 3</b>: Curva peligrosa. Hay poca visibilidad para los coches que vienen de San Roke como para la gente de Santa Ana 1. En el lugar de las cámaras estaría bien un espejo concavo. <a href="#img7">(Ver foto)</a>
-		
-
-<div id="img7" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_santana1.jpg">&nbsp;<img src="img/sanroke_santana.jpg">
-    </a></li>
-	
-<li><b>Nº 1</b>: Paso de cebra hasta la carnicería. Pasarelatik datozen eta Santa Ana 1era doazen oinezkoek La Cabañaraino joan behar ez dezaten. <a href="#img8">(Ver foto)</a>
-		
-
-<div id="img8" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_1_1_tx.jpg">&nbsp;<img src="img/sanroke_1_tx.jpg">
-    </a></li>
-<li><b>Paso de cebra de La Cabaña</b>: Poner una señal luminosa para aumentar la visibilidad y mejorar el paso a la acera <a href="#img9">(Ver foto)</a>
-		
-
-<div id="img9" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_cabana_tx.jpg">
-    </a></li>
-<li><b>Berdegune infrautilizado frente a La Cabaña</b>: Estudiar la posibilidad de hacer aparcamientos debajo y encima un parque accesible. <a href="#img10">(Ver foto)</a>
-		
-
-<div id="img10" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_berdegune_tx.jpg">
-    </a></li>
-<li><b>San Roke plazatxoa</b>: Hacerlo definitiva, ampliarla quitando la rampa (innecesaria al estar peatonalizado) y dotarla de sombras. <a href="#img11">(Ver foto)</a>
-		
-
-<div id="img11" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_plaza.jpg">&nbsp;<img src="img/sanroke_plaza1.jpg">
-    </a></li>
-<li><b>Igogailua</b>: Hacerle una 2ª planta y unirla mediante una pasarela con Santa Ana 1 <a href="#img12">(Ver foto)</a>
-		
-
-<div id="img12" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanroke_santana_ascensor.jpg">
-    </a></li>
-
+	<ul>
+		<li><b>Nº 15</b>: La accesibilidad de este portal es "cuestionable". Existe una rampa, pero sin barandillas y, en ocasiones, invadida por un coche aparcado. <a href="#img6">(Ikusi argazkia)</a>
+			<div id="img6" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_15_1_tx.jpg">&nbsp;<img src="img/sanroke_15_tx.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>Nº 3</b>: Curva peligrosa. Hay poca visibilidad para los coches que vienen de San Roke como para la gente de Santa Ana 1. En el lugar de las cámaras estaría bien un espejo concavo. <a href="#img7">(Ikusi argazkia)</a>
+			<div id="img7" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_santana1.jpg">&nbsp;<img src="img/sanroke_santana.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>Nº 1</b>: Paso de cebra hasta la carnicería. Pasarelatik datozen eta Santa Ana 1era doazen oinezkoek La Cabañaraino joan behar ez dezaten. <a href="#img8">(Ikusi argazkia)</a>
+			<div id="img8" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_1_1_tx.jpg">&nbsp;<img src="img/sanroke_1_tx.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>Paso de cebra de La Cabaña</b>: Poner una señal luminosa para aumentar la visibilidad y mejorar el paso a la acera. <a href="#img9">(Ikusi argazkia)</a>
+			<div id="img9" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_cabana_tx.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>Berdegune infrautilizado frente a La Cabaña</b>: Estudiar la posibilidad de hacer aparcamientos debajo y encima un parque accesible. <a href="#img10">(Ikusi argazkia)</a>
+			<div id="img10" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_berdegune_tx.jpg">
+				</div>
+			</div>
+		</li>
+		<li><b>San Roke plazatxoa</b>: Hacerlo definitiva, ampliarla quitando la rampa (innecesaria al estar peatonalizado) y dotarla de sombras. <a href="#img11">(Ikusi argazkia)</a>
+			<div id="img11" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_plaza.jpg">&nbsp;<img src="img/sanroke_plaza1.jpg">
+				</div>
+			</div>
+		</li>
+			<li><b>Igogailua</b>: Hacerle una 2ª planta y unirla mediante una pasarela con Santa Ana 1. <a href="#img12">(Ikusi argazkia)</a>
+				<div id="img12" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanroke_santana_ascensor.jpg">
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>
-</ul>
-
+<div class="evento">
+	<h3>Santa Ana 1</h3>
+	<ul>
+		<li><b>Nº 1, 3 y 5</b>: No son accesibles. Se podría dotar de accesibilidad a estos portales mediante una rampa desde el ascensor de San Roke (dándole otro piso).  Hacerle una 2ª planta y unirla mediante una pasarela con Santa Ana 1. <a href="#img13">(Ikusi argazkia)</a>
+				<div id="img13" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+					<div class="modal-contenido">
+					<img src="img/sanroke_santana_ascensor.jpg">
+					</div>
+				</div>
+		</li>
+		<li><b>Nº 5</b>: Zebra-bide aparkaleku: Se puede poner un pibote para que no aparquen coches obstruyendo el paso de cebra. </li>
+		<li><b>Plaza berria</b>: Arriskua. Quitar o tapar las esquinas de metal y poner una barandilla. <a href="#img14">(Ikusi argazkia)</a>
+				<div id="img14" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+					<div class="modal-contenido">
+					<img src="img/santana_eskina.jpg">
+					</div>
+				</div>
+		</li>
+	</ul>
+</div>
+<div class="evento">
+	<h3>Santa Ana 2 y 3</h3>
+	<ul>
+		<li><b>Accesibilidad</b>: Es necesario un ascensor que permita llegar a estas calles a personas con movilidad reducida. Tras la pasarela propuesta desde el ascensor de San Roke es posible un ascensor desde la plaza nueva de Santa Ana 1.  <a href="#img15">(Ikusi argazkia)</a>
+				<div id="img15" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+					<div class="modal-contenido">
+					<img src="img/santana_2_3_ascensor.jpg">
+					</div>
+				</div>
+		</li>
+		<li><b>Aparkalekuak</b>: Es crucial abordar el problema del aparcamiento en el barrio, que se ha convertido en el parking de la zona centro del puelbo. Un espàcio que permitiría la construcción de un parking grande (incluso con parte subterranea) podría ser el que hay entre las calles 2 y 3 y Lauronetxe, dándole acceso desde enfrente del ambulatorio. <a href="#img16">(Ikusi argazkia)</a>
+				<div id="img16" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+					<div class="modal-contenido">
+					<img src="img/santana_parking.jpg">
+					</div>
+				</div>
+		</li>
+	</ul>
+</div>
+<div class="evento">
+	<h3>Orokorrak</h3>
+	<ul>
+		<li><b>Espaloietako koxkak kendu</b>: Se repite en todo el barrio la falta de alisado de las aceras y la carretera generando problemas de accesibilidad a quién circula con andadores o sillas.  <a href="#img17">(Ikusi argazkia)</a>
+				<div id="img17" class="modal">
+				<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+					<div class="modal-contenido">
+					<img src="img/sanroke_cabana_tx.jpg">&nbsp;<img src="img/koska.jpg">&nbsp;<img src="img/koska1.jpg">
+					</div>
+				</div>
+		</li>
+		<li><b>Aparkalekuetako plazak margotu</b>: Podría ayudar a que se aprovechen más los sitios. </li>
+	</ul>
+</div>
 
 
 
