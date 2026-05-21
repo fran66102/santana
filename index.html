@@ -10,14 +10,14 @@
 <body>
 
 <header class="cabecera">
-    <h1>🌿 Barrio Santa Ana</h1>
+    <h1>Santa Ana Auzoa</h1>
     <p></p>
 
     <div class="tabs">
-        <button class="tablink" onclick="abrirTab(event, 'inicio')" id="defaultOpen">🏠 Inicio</button>
-        <button class="tablink" onclick="abrirTab(event, 'eventos')">📅 Eventos</button>
-        <button class="tablink" onclick="abrirTab(event, 'fotos')">📷 Fotos</button>
-        <button class="tablink" onclick="abrirTab(event, 'mapa')">🗺️ Mapa</button>
+        <button class="tablink" onclick="abrirTab(event, 'inicio')" id="defaultOpen">🏠 Hasiera</button>
+        <button class="tablink" onclick="abrirTab(event, 'eventos')">📅 Ekitaldiak</button>
+		<button class="tablink" onclick="abrirTab(event, 'aktak')">🗺️ Aktak</button>
+        <button class="tablink" onclick="abrirTab(event, 'fotos')">📷 Argazkiak</button>
     </div>
 </header>
 
@@ -38,6 +38,13 @@
 
 <!-- EVENTOS -->
 <div id="eventos" class="tabcontent">
+    <h2>📅 Hurrengoa</h2>
+    <div class="evento">
+        <h3>Bilera</h3>
+        <p><strong>Fecha:</strong> 25/05/2026</p>
+        <p>Lobianon</p>
+    </div>
+
     <h2>📅 Ekitaldiak</h2>
 <div class="evento">
         <h3>Paseo colectivo</h3>
@@ -72,9 +79,9 @@
     </div>
 </div>
 
-<!-- MAPA -->
+<!-- AKTAK -->
 <div id="mapa" class="tabcontent">
-    <h2>🗺️ Lugares del barrio</h2>
+    <h2>🗺️ Actas de las reuniones</h2>
 
     <p>Puntos destacados del barrio:</p>
     <ul>
@@ -96,53 +103,22 @@
         <h3>San Isidro</h3>
 		<ul>
 		<li><b>Nº 15</b>: Este portal no es accesible. No hay rampa que permita el acceso para personas con movilidad reducida. <a href="#img1">(Ver foto)</a>
-		
-
-
-<!--estoy probando imagen en movil-->
-
-<img src="img/sanisidro_15_tx.jpg" onclick="abrir(this.src)">
-
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black;">
-    <span onclick="cerrar()" style="color:white; font-size:30px;">×</span>
-    <img id="imgModal" style="width:90%; margin:auto; display:block;">
-</div>
-
-<script>
-function abrir(src){
-    document.getElementById('modal').style.display = 'block';
-    document.getElementById('imgModal').src = src;
-}
-function cerrar(){
-    document.getElementById('modal').style.display = 'none';
-}
-</script>
-
-
-
-
-<!-- Modal -->
-<div id="img1" class="modal">
-    <a href="#" class="cerrar">×</a>
-
-    <div class="modal-contenido">
-        <img src="img/sanisidro_15_tx.jpg">
-    </div>
-</div>
-</li>
-
-
-
-
+			<div id="img1" class="modal">
+			<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanisidro_15_tx.jpg">
+				</div>
+			</div>
+		</li>
 	<li><b>Nº 13</b>: Este portal no es accesible sin salir a la carretera. No hay rampa (o escaleras o carretera). <a href="#img2">(Ver foto)</a>
-		
-
-<div id="img2" class="modal">
-    
-<!-- Botón cerrar -->
-    <a href="#" class="cerrar">&times;</a>
-
-        <img src="img/sanisidro_13_tx.jpg">
+			<div id="img2" class="modal">
+			<!-- Botón cerrar -->
+				<a href="#" class="cerrar">[X] Itxi</a>
+				<div class="modal-contenido">
+				<img src="img/sanisidro_13_tx.jpg">
+				</div>
+			</div>
     </a></li>
 	<li><b>Nº 9-7 y 5-3</b>: Apaingarri begetalak. Hay espacios utilizados por la gente, pero algún adorno vegetal le daría otro color sin mucha inversión.</li>
 	<li><b>Goienkale-San Isidro eta San Isidro-San Roke eskilarak</b>: Suciedad. Se solicita que se limpien con mayor frecuencia.<a href="#img3">(Ver foto)</a>
@@ -178,7 +154,7 @@ function cerrar(){
 <div class="evento">
 <h3>San Isidro - San Roke - Santa Ana</h3>
 		<ul>
-		<li><b>Lotura hobetu</b>: Crear un acceso que sustituya a las actuales escaleras empinadas y estrechas mediante una pasarela sin escaleras enlazando así con la plaza de Sakona. <a href="#img5">(Ver[...]
+		<li><b>Lotura hobetu</b>: Crear un acceso que sustituya a las actuales escaleras empinadas y estrechas mediante una pasarela sin escaleras enlazando así con la plaza de Sakona. <a href="#img5">(Ver foto)</a>
 		
 
 <div id="img5" class="modal">
@@ -203,7 +179,7 @@ function cerrar(){
 
         <img src="img/sanroke_15_1_tx.jpg">&nbsp;<img src="img/sanroke_15_tx.jpg">
     </a></li>
-	<li><b>Nº 3</b>: Curva peligrosa. Hay poca visibilidad para los coches que vienen de San Roke como para la gente de Santa Ana 1. En el lugar de las cámaras estaría bien un espejo concavo. <a href=[...]
+	<li><b>Nº 3</b>: Curva peligrosa. Hay poca visibilidad para los coches que vienen de San Roke como para la gente de Santa Ana 1. En el lugar de las cámaras estaría bien un espejo concavo. <a href="#img7">(Ver foto)</a>
 		
 
 <div id="img7" class="modal">
@@ -293,6 +269,5 @@ function abrirTab(evt, nombreTab) {
 document.getElementById("defaultOpen").click();
 </script>
 
-<!-- GitHub Pages Deployment Trigger -->
 </body>
 </html>
