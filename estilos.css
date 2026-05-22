@@ -144,11 +144,8 @@ padding-left: 15px;
     overflow-y: auto;
 }
 .modal-contenido img {
-    width: 100%;
-    max-width: 300px;  /* ✅ controla tamaño en escritorio */
-    height: auto;
+    max-width: 90%;  /* ✅ controla tamaño en escritorio */
 }
-``
 
 /* Imagen */
 .modal img {
