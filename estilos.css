@@ -117,7 +117,7 @@ padding-left: 15px;
 .modal {
     position: fixed;
     inset: 0; /* más limpio que top/left/width/height */
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.7);
     z-index: 9999;
 
     display: none;
@@ -134,16 +134,21 @@ padding-left: 15px;
 
 /* Contenedor */
 .modal-contenido {
-    position: relative;
-    margin: auto;
+    display: flex;
+    flex-wrap: wrap;        /* ✅ permite saltar a otra línea */
+    justify-content: center;
+    gap: 10px;              /* espacio entre imágenes */
 
     max-width: 90vw;
     max-height: 90vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-y: auto;
 }
+.modal-contenido img {
+    width: 100%;
+    max-width: 300px;  /* ✅ controla tamaño en escritorio */
+    height: auto;
+}
+``
 
 /* Imagen */
 .modal img {
