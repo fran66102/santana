@@ -42,6 +42,18 @@ ul.sin-gap {
     border-left: 5px solid #ffcc00;
 	border-radius: 8px;
     }
+/* Apuntamos directamente al h2 y al enlace dentro de tu columna */
+.columna1 h2 {
+  line-height: 1.4; /* Da espacio suficiente entre las dos líneas de texto */
+  margin-top: 10px; /* Separación limpia respecto al h3 de arriba */
+}
+
+.columna1 h2 a.tablink {
+  display: inline-block; /* Permite que el enlace se comporte como un bloque de texto */
+  text-decoration: none; /* Opcional: quita el subrayado si no lo quieres */
+  height: auto;          /* Asegura que ninguna regla previa le imponga un alto fijo */
+}
+
 .columna2 {
       /* flex: grow shrink basis */
       /* Se estiran (1), se encogen (1) y buscan un tamaño ideal de 300px */
