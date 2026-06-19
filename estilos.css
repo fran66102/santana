@@ -32,15 +32,16 @@ ul.sin-gap {
       /* Se estiran (1), se encogen (1) y buscan un tamaño ideal de 300px */
       flex: 1 1 300px; 
       
-    background-color: #fffae6; 
-	border: 2px solid #ffcc00; 
-	padding: 2px; 
+    background-color: #fffae6;
+	border-radius: 8px;
+	border-top: 2px solid #ffcc00;
+	border-right: 2px solid #ffcc00;
+	border-bottom: 2px solid #ffcc00;
+	border-left: 5px solid #ffcc00;
 	padding-right: 15px;
 	padding-bottom: 15px;
 	padding-left: 15px;
     margin-bottom: 15px;
-    border-left: 5px solid #ffcc00;
-	border-radius: 8px;
     }
 /* Apuntamos directamente al h2 y al enlace dentro de tu columna */
 .columna1 h2 {
@@ -63,10 +64,12 @@ ul.sin-gap {
 	padding-bottom: 15px;
 	padding-left: 15px;
     margin-bottom: 15px;
-    border-left: 5px solid #cbd5e1;
+    background-color: #e2e8f0;
 	border-radius: 8px;
-	background-color: #e2e8f0;
-	border: 2px solid #cbd5e1; 
+	border-top: 2px solid #cbd5e1;
+	border-right: 2px solid #cbd5e1;
+	border-bottom: 2px solid #cbd5e1;
+	border-left: 5px solid #cbd5e1;
     }
 /* CABECERA */
 .cabecera {
