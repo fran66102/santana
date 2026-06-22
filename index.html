@@ -346,28 +346,13 @@ function abrirTab(evt, nombreTab) {
     }
 
     document.getElementById(nombreTab).style.display = "block";
-    evt.currentTarget.classList.add("active");
-}
-
-document.getElementById("defaultOpen").click();
-	function abrirTab(evt, nombreTab) {
-    let tabcontent = document.getElementsByClassName("tabcontent");
-    let tablinks = document.getElementsByClassName("tablink");
-
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-
-    document.getElementById(nombreTab).style.display = "block";
     if (evt) {
         evt.currentTarget.classList.add("active");
     }
+    
+    // Scrollea al top
+    window.scrollTo(0, 0);
 }
-
 
 // Cuando carga la página, comprueba si hay ancla en la URL
 window.addEventListener('load', function() {
@@ -377,16 +362,14 @@ window.addEventListener('load', function() {
         const boton = document.querySelector(`[data-tab="${hash}"]`);
         if (boton) {
             abrirTab({currentTarget: boton}, hash);
-            boton.classList.add("active");
         }
-        
-        // Scroll instantáneo al top
+        // Scroll al top
         window.scrollTo(0, 0);
     } else {
         // Si no hay ancla, abre el tab por defecto
         document.getElementById("defaultOpen").click();
     }
-});	
+});
 </script>
 	
 
