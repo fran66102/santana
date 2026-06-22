@@ -349,26 +349,28 @@ function abrirTab(evt, nombreTab) {
     if (evt) {
         evt.currentTarget.classList.add("active");
     }
-    
-    // Scrollea al top
-    window.scrollTo(0, 0);
 }
 
 // Cuando carga la página, comprueba si hay ancla en la URL
 window.addEventListener('load', function() {
     const hash = window.location.hash.substring(1); // Quita el #
+    
     if (hash) {
         // Busca el botón correspondiente y lo activa
         const boton = document.querySelector(`[data-tab="${hash}"]`);
         if (boton) {
             abrirTab({currentTarget: boton}, hash);
         }
-        // Scroll al top
-        window.scrollTo(0, 0);
     } else {
         // Si no hay ancla, abre el tab por defecto
         document.getElementById("defaultOpen").click();
     }
+    
+    // Fuerza scroll al top después de todo
+    setTimeout(function() {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+    }, 50);
 });
 </script>
 	
