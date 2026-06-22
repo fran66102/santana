@@ -1,89 +1,346 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Galería (estática)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mi Galería de Fotos</title>
   <style>
-    /* Mantén los estilos que ya tenías */
-    .galeria-automatica {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+    :root{
+      --gap:16px;
+      --bg:#0f1720;
+      --card-bg:#0b1220;
+      --accent:#ff7a59;
+      --text:#e6eef8;
+      --muted:#9fb0c8;
+      --radius:10px;
     }
-    .foto-caja {
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      aspect-ratio: 1 / 1;
-      cursor: pointer;
-    }
-    .foto-caja img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
-    .foto-caja img:hover { transform: scale(1.05); }
 
-    .lightbox { display:none; position:fixed; z-index:999; inset:0; background:rgba(0,0,0,.9); justify-content:center; align-items:center; }
-    .lightbox img { max-width:90%; max-height:90%; object-fit:contain; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,.5); }
-    .lightbox-cerrar { position:absolute; top:20px; right:30px; color:#fff; font-size:40px; cursor:pointer; user-select:none; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071122 0%, #071627 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+    }
+
+    header{
+      text-align:center;
+      padding:36px 16px 8px;
+    }
+    h1{margin:0;font-size:clamp(20px,3.6vw,34px); letter-spacing: -0.02em;}
+    p.lead{color:var(--muted); margin-top:8px}
+
+    /* Grid */
+    .galeria-automatica{
+      width:min(1200px, calc(100% - 48px));
+      margin:28px auto 80px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:var(--gap);
+      align-items:stretch;
+    }
+
+    /* Card / thumbnail */
+    .foto-caja{
+      position:relative;
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));
+      box-shadow: 0 8px 20px rgba(2,6,23,0.6);
+      cursor:pointer;
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+      min-height:170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .foto-caja:focus{outline:3px solid rgba(255,122,89,0.12); outline-offset:3px;}
+    .foto-caja:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.8); }
+
+    .thumb{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transition: transform .6s cubic-bezier(.2,.9,.2,1);
+      will-change:transform;
+    }
+    .foto-caja:hover .thumb{ transform: scale(1.06); }
+
+    /* caption overlay bottom */
+    .caption{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding:10px 12px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.5));
+      transform: translateY(100%);
+      transition: transform .22s ease;
+      color:var(--text);
+    }
+    .foto-caja:hover .caption, .foto-caja:focus .caption { transform: translateY(0%); }
+
+    .caption .title{ font-weight:600; font-size:0.95rem; }
+    .caption .sub{ font-size:0.8rem; color:var(--muted); margin-left:auto; }
+
+    /* Lightbox */
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      background: rgba(2,6,23,0.88);
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+    .lightbox.show{ display:flex; }
+
+    .lightbox-content{
+      max-width:95%;
+      max-height:95%;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+    }
+    .lightbox img{
+      max-width:100%;
+      max-height:80vh;
+      border-radius:8px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.6);
+      background: #071320;
+    }
+
+    .lightbox .controls{
+      position:absolute;
+      top:14px;
+      right:18px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn{
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:8px 10px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:13px;
+    }
+    .btn:hover{ background: rgba(255,255,255,0.06); }
+    .btn:active{ transform:translateY(1px); }
+
+    .lightbox .nav{
+      position:absolute;
+      left:12px; right:12px; top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+    .nav button{
+      pointer-events:auto;
+      background:linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+      color:white;
+      border:none;
+      width:56px;height:56px;border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    .lightbox .caption-large{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:0.95rem;
+      text-align:center;
+      max-width:90ch;
+    }
+
+    /* small screens adjustments */
+    @media (max-width:600px){
+      .caption{ padding:8px; font-size:13px }
+      .nav button{ width:46px;height:46px; font-size:18px;}
+      .lightbox img{ max-height:70vh }
+    }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;font-family:sans-serif;margin-top:40px;">Mi Galería de Fotos</h1>
+  <header>
+    <h1>Gure auzoa argazkietan</h1>
+    <p class="lead">Haz clic en una imagen para ampliarla. Usa ← → Esc para navegar / cerrar.</p>
+  </header>
 
-  <div id="galeria" class="galeria-automatica">
-    <p style="grid-column:1/-1;text-align:center;">Cargando imágenes...</p>
-  </div>
+  <main>
+    <div id="galeria" class="galeria-automatica" aria-live="polite" role="list">
+      <p style="grid-column:1/-1;text-align:center;color:var(--muted)">Cargando imágenes…</p>
+    </div>
+  </main>
 
-  <div id="miLightbox" class="lightbox" onclick="cerrarLightbox()">
-    <span class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</span>
-    <img id="imagenLightbox" src="" alt="Imagen ampliada">
+  <!-- Lightbox -->
+  <div id="miLightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content" role="document">
+      <div class="controls" aria-hidden="false">
+        <a id="downloadBtn" class="btn" title="Descargar" download><span>⬇</span></a>
+        <button id="closeBtn" class="btn" title="Cerrar">✕</button>
+      </div>
+
+      <div class="nav" aria-hidden="false">
+        <button id="prevBtn" aria-label="Imagen anterior">‹</button>
+        <button id="nextBtn" aria-label="Siguiente imagen">›</button>
+      </div>
+
+      <img id="imagenLightbox" src="" alt="">
+      <div id="captionLarge" class="caption-large" aria-live="polite"></div>
+    </div>
   </div>
 
   <script>
     const galeria = document.getElementById('galeria');
     const lightbox = document.getElementById('miLightbox');
     const imagenLightbox = document.getElementById('imagenLightbox');
+    const captionLarge = document.getElementById('captionLarge');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    // Carga images.json y renderiza
-    fetch('images.json')
-      .then(r => {
-        if (!r.ok) throw new Error('No se encontró images.json');
-        return r.json();
-      })
-      .then(listado => {
-        galeria.innerHTML = '';
-        if (!Array.isArray(listado) || listado.length === 0) {
-          galeria.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No hay imágenes.</p>';
-          return;
+    let images = []; // array of {src, title?, caption?}
+    let currentIndex = -1;
+
+    // Cargar images.json (admite array de strings o array de objetos)
+    async function cargarImagenes(){
+      try{
+        const ruta = new URL('images.json', location.href).href;
+        const res = await fetch(ruta, {cache: 'no-store'});
+        if(!res.ok) throw new Error('HTTP ' + res.status + ' al solicitar ' + ruta);
+        const body = await res.json();
+
+        // Normalizar: si es array de strings convertir a objetos
+        if(Array.isArray(body) && body.length > 0 && typeof body[0] === 'string'){
+          images = body.map(s => ({ src: s, title: s.split('/').pop().replace(/[-_]/g,' '), caption: '' }));
+        } else if (Array.isArray(body)){
+          images = body.map(item => {
+            if(!item) return null;
+            if(typeof item === 'string') return { src: item, title: item.split('/').pop(), caption: '' };
+            return { src: item.src, title: item.title || (item.src && item.src.split('/').pop()), caption: item.caption || '' };
+          }).filter(Boolean);
+        } else {
+          throw new Error('Formato de images.json no válido (se espera array)');
         }
-        listado.forEach(ruta => {
-          const div = document.createElement('div');
-          div.className = 'foto-caja';
-          div.onclick = () => abrirLightbox(ruta);
-          const img = document.createElement('img');
-          img.src = ruta;
-          img.alt = ruta.split('/').pop();
-          img.loading = 'lazy';
-          div.appendChild(img);
-          galeria.appendChild(div);
-        });
-      })
-      .catch(err => {
-        galeria.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#900;">Error cargando imágenes.</p>';
-        console.error(err);
-      });
 
-    function abrirLightbox(ruta) {
-      imagenLightbox.src = ruta;
-      lightbox.style.display = 'flex';
+        renderGaleria();
+      } catch(err){
+        console.error('Error cargando images.json:', err);
+        galeria.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#ffb4a6">Error cargando imágenes: ${err.message}</p>`;
+      }
     }
-    function cerrarLightbox() {
-      lightbox.style.display = 'none';
+
+    function renderGaleria(){
+      if(!images || images.length === 0){
+        galeria.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No hay imágenes.</p>';
+        return;
+      }
+      galeria.innerHTML = '';
+      images.forEach((imgObj, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'foto-caja';
+        btn.type = 'button';
+        btn.setAttribute('role','listitem');
+        btn.dataset.index = i;
+        btn.title = imgObj.title || '';
+        btn.onclick = () => abrirLightbox(i);
+        btn.onkeydown = (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirLightbox(i); } };
+
+        const image = document.createElement('img');
+        image.className = 'thumb';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.alt = imgObj.title || '';
+        image.src = imgObj.src;
+        // If you later want srcset/responsive images, set image.srcset = ...
+        btn.appendChild(image);
+
+        const cap = document.createElement('div');
+        cap.className = 'caption';
+        const t = document.createElement('div'); t.className = 'title'; t.textContent = imgObj.title || '';
+        const s = document.createElement('div'); s.className = 'sub'; s.textContent = imgObj.caption ? '' : '';
+        cap.appendChild(t); cap.appendChild(s);
+        btn.appendChild(cap);
+
+        galeria.appendChild(btn);
+      });
+    }
+
+    // LIGHTBOX
+    function abrirLightbox(index){
+      currentIndex = index;
+      const item = images[index];
+      if(!item) return;
+      imagenLightbox.src = item.src;
+      imagenLightbox.alt = item.title || '';
+      captionLarge.textContent = item.caption || item.title || '';
+      downloadBtn.href = item.src;
+      // show
+      lightbox.classList.add('show');
+      lightbox.setAttribute('aria-hidden','false');
+      // focus management
+      closeBtn.focus();
+      // preload next
+      preloadImage((index + 1) % images.length);
+    }
+
+    function cerrarLightbox(){
+      lightbox.classList.remove('show');
+      lightbox.setAttribute('aria-hidden','true');
       imagenLightbox.src = '';
+      currentIndex = -1;
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarLightbox(); });
+
+    function prevImage(){
+      if(images.length === 0) return;
+      const next = (currentIndex - 1 + images.length) % images.length;
+      abrirLightbox(next);
+    }
+    function nextImage(){
+      if(images.length === 0) return;
+      const next = (currentIndex + 1) % images.length;
+      abrirLightbox(next);
+    }
+
+    function preloadImage(index){
+      const it = images[index];
+      if(!it) return;
+      const img = new Image();
+      img.src = it.src;
+    }
+
+    // Event listeners
+    closeBtn.addEventListener('click', cerrarLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    // click outside image closes (but not clicking controls)
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) cerrarLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(!lightbox.classList.contains('show')) return;
+      if(e.key === 'Escape') cerrarLightbox();
+      else if(e.key === 'ArrowLeft') prevImage();
+      else if(e.key === 'ArrowRight') nextImage();
+    });
+
+    // Inicializar
+    cargarImagenes();
   </script>
 </body>
 </html>
