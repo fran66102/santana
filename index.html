@@ -368,6 +368,7 @@ document.getElementById("defaultOpen").click();
     }
 }
 
+
 // Cuando carga la página, comprueba si hay ancla en la URL
 window.addEventListener('load', function() {
     const hash = window.location.hash.substring(1); // Quita el #
@@ -378,11 +379,14 @@ window.addEventListener('load', function() {
             abrirTab({currentTarget: boton}, hash);
             boton.classList.add("active");
         }
+        
+        // Scroll instantáneo al top
+        window.scrollTo(0, 0);
     } else {
         // Si no hay ancla, abre el tab por defecto
         document.getElementById("defaultOpen").click();
     }
-});
+});	
 </script>
 	
 
