@@ -81,28 +81,44 @@ ul.sin-gap {
 
 /* TABS */
 .tabs {
-    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    flex-wrap: wrap;
 }
 
 .tablink {
-    background-color: inherit;
-    border: none;
-    outline: none;
+    background: white;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .tablink:hover {
-    background-color: #ddd;
+    background: #f0f0f0;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
 }
 
 .tablink.active {
-    background-color: #ccc;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }
-
 
 /* CONTENIDO */
 .tabcontent {
