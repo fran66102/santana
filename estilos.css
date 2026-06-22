@@ -82,42 +82,36 @@ ul.sin-gap {
 /* TABS */
 .tabs {
     display: flex;
-    gap: 15px;
-    padding: 25px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+    background: #e0e5ec;
+    border-radius: 15px;
 }
 
 .tablink {
-    background: white;
+    background: #e0e5ec;
     color: #333;
-    border: 1px solid #e0e0e0;
-    padding: 14px 20px;
+    border: none;
+    padding: 15px 28px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+    box-shadow: 4px 4px 12px #b8bec3, -4px -4px 12px #ffffff;
 }
 
 .tablink:hover {
-    background: #f0f0f0;
-    border-color: #667eea;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-    transform: translateY(-1px);
+    box-shadow: 2px 2px 8px #b8bec3, -2px -2px 8px #ffffff;
+    transform: scale(1.05);
 }
 
 .tablink.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border-color: transparent;
-    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+    box-shadow: inset 2px 2px 5px #b8bec3, inset -2px -2px 5px #ffffff;
 }
 
 /* CONTENIDO */
