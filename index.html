@@ -24,9 +24,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p></p>
 
     <div class="tabs">
-    <a href="index.html#inicio" class="tablink" id="defaultOpen">🏠 Inicio</a>
-    <a href="index.html#eventos" class="tablink">📅 Eventos</a>
-    <a href="index.html#aktak" class="tablink">🗺️ Aktak</a>
+    <button class="tablink" data-tab="inicio" onclick="abrirTab(event, 'inicio')" id="defaultOpen">🏠 Inicio</button>
+    <button class="tablink" data-tab="eventos" onclick="abrirTab(event, 'eventos')">📅 Eventos</button>
+    <button class="tablink" data-tab="aktak" onclick="abrirTab(event, 'aktak')">🗺️ Aktak</button>
     <a href="galeria.html" class="tablink">📷 Argazkiak</a>
 </div>
 
@@ -350,7 +350,41 @@ function abrirTab(evt, nombreTab) {
 }
 
 document.getElementById("defaultOpen").click();
+	function abrirTab(evt, nombreTab) {
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    let tablinks = document.getElementsByClassName("tablink");
+
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    document.getElementById(nombreTab).style.display = "block";
+    if (evt) {
+        evt.currentTarget.classList.add("active");
+    }
+}
+
+// Cuando carga la página, comprueba si hay ancla en la URL
+window.addEventListener('load', function() {
+    const hash = window.location.hash.substring(1); // Quita el #
+    if (hash) {
+        // Busca el botón correspondiente y lo activa
+        const boton = document.querySelector(`[data-tab="${hash}"]`);
+        if (boton) {
+            abrirTab({currentTarget: boton}, hash);
+            boton.classList.add("active");
+        }
+    } else {
+        // Si no hay ancla, abre el tab por defecto
+        document.getElementById("defaultOpen").click();
+    }
+});
 </script>
+	
 
 </body>
 </html>
