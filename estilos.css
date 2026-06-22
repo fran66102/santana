@@ -77,57 +77,41 @@ ul.sin-gap {
     color: white;
     padding: 30px 20px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(106, 191, 154, 0.3);
-    border-radius: 0 0 15px 15px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cabecera::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,100 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-    background-repeat: no-repeat;
-    background-size: cover;
-    pointer-events: none;
+    box-shadow: 0 6px 20px rgba(106, 191, 154, 0.25);
+    border-radius: 10px;
 }
 
 .cabecera h1 {
     font-size: 32px;
     font-weight: 700;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
 }
 
 .cabecera p {
-    font-size: 14px;
-    margin: 8px 0 0 0;
-    opacity: 0.95;
-    position: relative;
-    z-index: 1;
-}
-/* TABS */
-.tabs {
-    display: flex;
-    gap: 15px;
-    padding: 25px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    flex-wrap: wrap;
+    font-size: 15px;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+    font-weight: 300;
 }
 
-.tablink {
-    background: white;
-    color: #333;
-    border: 1px solid #e0e0e0;
-    padding: 14px 20px;
-    font-size: 16px;
+/* Estilos para los tabs dentro de la cabecera */
+.cabecera .tabs {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cabecera .tablink {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 20px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     border-radius: 8px;
@@ -136,23 +120,21 @@ ul.sin-gap {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
-.tablink:hover {
-    background: #f0f0f0;
-    border-color: #667eea;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-    transform: translateY(-1px);
+.cabecera .tablink:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
-.tablink.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+.cabecera .tablink.active {
+    background: white;
+    color: #6abf9a;
+    border-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 
 /* CONTENIDO */
 .tabcontent {
