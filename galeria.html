@@ -137,19 +137,22 @@
   background: linear-gradient(90deg, var(--accent), #ff5a3a);
   color: #fff;
   border: none;
-  padding: 8px 10px; /* reduced padding for slightly smaller size */
+  box-sizing: border-box;
+  width: 40px;        /* explicit fixed size to ensure both buttons match */
+  height: 40px;
+  padding: 0;         /* remove padding so inner icon is centered */
   border-radius: 10px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 14px; /* slightly smaller font */
-  min-width: 40px; /* reduced min width */
-  height: 40px; /* reduced height */
+  font-size: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
   transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
 }
+    .btn span{ display:inline-block; line-height:1; font-size:16px; }
     .btn:hover{ transform: translateY(-2px); filter: brightness(1.05); }
 .btn:active{ transform: translateY(0); }
 .btn:focus{ outline: 3px solid rgba(255,122,89,0.22); outline-offset:4px; }
@@ -199,7 +202,7 @@
     padding:8px;
   }
   .lightbox .nav button{ width:52px; height:52px; font-size:20px; }
-  .btn{ min-width:44px; height:44px; font-size:14px; padding:9px; }
+  .btn{ width:44px; height:44px; font-size:14px; }
 }
   </style>
 </head>
