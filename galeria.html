@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Galería (estática)</title>
+  <style>
+    /* Mantén los estilos que ya tenías */
+    .galeria-automatica {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .foto-caja {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+    }
+    .foto-caja img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
+    .foto-caja img:hover { transform: scale(1.05); }
+
+    .lightbox { display:none; position:fixed; z-index:999; inset:0; background:rgba(0,0,0,.9); justify-content:center; align-items:center; }
+    .lightbox img { max-width:90%; max-height:90%; object-fit:contain; border-radius:4px; box-shadow:0 0 20px rgba(0,0,0,.5); }
+    .lightbox-cerrar { position:absolute; top:20px; right:30px; color:#fff; font-size:40px; cursor:pointer; user-select:none; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;font-family:sans-serif;margin-top:40px;">Mi Galería de Fotos</h1>
+
+  <div id="galeria" class="galeria-automatica">
+    <p style="grid-column:1/-1;text-align:center;">Cargando imágenes...</p>
+  </div>
+
+  <div id="miLightbox" class="lightbox" onclick="cerrarLightbox()">
+    <span class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</span>
+    <img id="imagenLightbox" src="" alt="Imagen ampliada">
+  </div>
+
+  <script>
+    const galeria = document.getElementById('galeria');
+    const lightbox = document.getElementById('miLightbox');
+    const imagenLightbox = document.getElementById('imagenLightbox');
+
+    // Carga images.json y renderiza
+    fetch('/images.json')
+      .then(r => {
+        if (!r.ok) throw new Error('No se encontró images.json');
+        return r.json();
+      })
+      .then(listado => {
+        galeria.innerHTML = '';
+        if (!Array.isArray(listado) || listado.length === 0) {
+          galeria.innerHTML = '<p style="grid-column:1/-1;text-align:center;">No hay imágenes.</p>';
+          return;
+        }
+        listado.forEach(ruta => {
+          const div = document.createElement('div');
+          div.className = 'foto-caja';
+          div.onclick = () => abrirLightbox(ruta);
+          const img = document.createElement('img');
+          img.src = ruta;
+          img.alt = ruta.split('/').pop();
+          img.loading = 'lazy';
+          div.appendChild(img);
+          galeria.appendChild(div);
+        });
+      })
+      .catch(err => {
+        galeria.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#900;">Error cargando imágenes.</p>';
+        console.error(err);
+      });
+
+    function abrirLightbox(ruta) {
+      imagenLightbox.src = ruta;
+      lightbox.style.display = 'flex';
+    }
+    function cerrarLightbox() {
+      lightbox.style.display = 'none';
+      imagenLightbox.src = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarLightbox(); });
+  </script>
+</body>
+</html>
