@@ -73,46 +73,86 @@ ul.sin-gap {
     }
 /* CABECERA */
 .cabecera {
-    background-color: #6abf9a;
+    background: linear-gradient(135deg, #6abf9a 0%, #5a9f7f 100%);
     color: white;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(106, 191, 154, 0.3);
+    border-radius: 0 0 15px 15px;
+    position: relative;
+    overflow: hidden;
 }
 
+.cabecera::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,100 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+}
+
+.cabecera h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.cabecera p {
+    font-size: 14px;
+    margin: 8px 0 0 0;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
 /* TABS */
 .tabs {
     display: flex;
-    gap: 20px;
-    padding: 30px;
-    background: #e0e5ec;
-    border-radius: 15px;
+    gap: 15px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    flex-wrap: wrap;
 }
 
 .tablink {
-    background: #e0e5ec;
+    background: white;
     color: #333;
-    border: none;
-    padding: 15px 28px;
+    border: 1px solid #e0e0e0;
+    padding: 14px 20px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
-    box-shadow: 4px 4px 12px #b8bec3, -4px -4px 12px #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .tablink:hover {
-    box-shadow: 2px 2px 8px #b8bec3, -2px -2px 8px #ffffff;
-    transform: scale(1.05);
+    background: #f0f0f0;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
 }
 
 .tablink.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    box-shadow: inset 2px 2px 5px #b8bec3, inset -2px -2px 5px #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
 }
+
 
 /* CONTENIDO */
 .tabcontent {
