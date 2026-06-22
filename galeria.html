@@ -47,7 +47,7 @@
     const imagenLightbox = document.getElementById('imagenLightbox');
 
     // Carga images.json y renderiza
-    fetch('/images.json')
+    fetch('images.json')
       .then(r => {
         if (!r.ok) throw new Error('No se encontró images.json');
         return r.json();
