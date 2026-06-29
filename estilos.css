@@ -71,34 +71,115 @@ ul.sin-gap {
 	border-bottom: 2px solid #cbd5e1;
 	border-left: 5px solid #cbd5e1;
     }
-/* CABECERA */
+/* ═══════════════════════════════════════════════════════════════ */
+/* CABECERA MEJORADA - RESPONSIVA Y MODERNA */
+/* ═══════════════════════════════════════════════════════════════ */
+
 .cabecera {
-    background: linear-gradient(135deg, #6abf9a 0%, #5a9f7f 100%);
-    color: white;
-    padding: 30px 20px;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 2.5rem);
     text-align: center;
-    box-shadow: 0 6px 20px rgba(106, 191, 154, 0.25);
-    border-radius: 10px;
+    color: white;
+    box-shadow: 0 8px 24px rgba(106, 191, 154, 0.2);
+    border-radius: 0;
+    margin-bottom: 2rem;
+}
+
+/* Patrón de fondo con degradado y geometría */
+.cabecera::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        /* Patrón de círculos sutiles */
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        /* Degradado principal dinámico */
+        linear-gradient(135deg, #5ab89f 0%, #4a8f7a 40%, #3a6f5f 100%);
+    background-size: 200px 200px, 300px 300px, 250px 250px, 100% 100%;
+    z-index: 0;
+}
+
+/* Contenedor de contenido dentro del header */
+.cabecera > * {
+    position: relative;
+    z-index: 1;
 }
 
 .cabecera h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-    letter-spacing: -0.5px;
+    /* Tipografía fluida - se adapta automáticamente al tamaño de pantalla */
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
 }
 
 .cabecera p {
-    font-size: 15px;
-    margin: 0 0 20px 0;
-    opacity: 0.9;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    margin: 0 0 1.5rem 0;
+    opacity: 0.95;
     font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Línea decorativa bajo el título */
+.cabecera::after {
+    content: '';
+    position: relative;
+    display: block;
+    width: clamp(60px, 15vw, 150px);
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    margin: 1rem auto 1.5rem;
+    border-radius: 2px;
+}
+
+/* Contenedor de badges */
+.header-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Badge individual */
+.badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: clamp(0.35rem, 1.5vw, 0.6rem) clamp(0.75rem, 2vw, 1.2rem);
+    border-radius: 999px;
+    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.3rem, 1vw, 0.6rem);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.badge-icon {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Estilos para los tabs dentro de la cabecera */
 .cabecera .tabs {
     display: flex;
-    gap: 15px;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
     padding: 0;
     background: transparent;
     border-radius: 0;
@@ -109,33 +190,53 @@ ul.sin-gap {
 .cabecera .tablink {
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 12px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: none;
+    
 }
 
 .cabecera .tablink:hover {
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .cabecera .tablink.active {
     background: white;
-    color: #6abf9a;
+    color: #5ab89f;
     border-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .cabecera {
+        padding: 1.5rem 1rem;
+    }
+    
+    .cabecera h1 {
+        margin-bottom: 0.25rem;
+    }
+    
+    .cabecera .tabs {
+        gap: 0.5rem;
+    }
+    
+    .cabecera .tablink {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .header-badges {
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
 /* CONTENIDO */
 .tabcontent {
     display: none;
