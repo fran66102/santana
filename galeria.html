@@ -23,9 +23,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1>Santa Ana Auzoa - Ermua</h1>
     <p>Auzoa hobetuz / Mejorando el barrio</p>
     <div class="header-badges">
-    <a href="index.html#inicio" class="badge active">🏠 Inicio</button>
-    <a href="index.html#inicio" class="badge active">📅 Eventos</button>
-    <a href="index.html#inicio" class="badge active">🗺️ Aktak</button>
+    <a href="index.html#inicio" class="badge">🏠 Inicio</button>
+    <a href="index.html#inicio" class="badge">📅 Eventos</button>
+    <a href="index.html#inicio" class="badge">🗺️ Aktak</button>
     <a href="galeria.html" class="badge active">📷 Argazkiak</a>
 </div>
 	<h2>Gure auzoa argazkietan</h2><p>Haz clic en una imagen para ampliarla.</p>
@@ -56,15 +56,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <script>
-	  <script>
-	document.querySelectorAll('.badge').forEach(badge => {
-    badge.addEventListener('click', function() {
-        // Remover active de todos
-        document.querySelectorAll('.badge').forEach(b => b.classList.remove('active'));
-        // Agregar active solo a este
-        this.classList.add('active');
-    });
-});
     const galeria = document.getElementById('galeria');
     const lightbox = document.getElementById('miLightbox');
     const imagenLightbox = document.getElementById('imagenLightbox');
