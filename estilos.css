@@ -22,7 +22,6 @@ ul.sin-gap {
     /* Tipografía fluida - se adapta automáticamente al tamaño de pantalla */
     font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 800;
-	text-align:center;
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.8px;
     line-height: 1.2;
