@@ -175,6 +175,13 @@ ul.sin-gap {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 }
+.badge.active {
+    background: white;
+    color: #5ab89f;
+    border-color: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
 
 .badge-icon {
     font-size: clamp(0.9rem, 2vw, 1.2rem);
