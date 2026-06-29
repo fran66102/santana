@@ -331,6 +331,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
+	document.querySelectorAll('.badge').forEach(badge => {
+    badge.addEventListener('click', function() {
+        // Remover active de todos
+        document.querySelectorAll('.badge').forEach(b => b.classList.remove('active'));
+        // Agregar active solo a este
+        this.classList.add('active');
+    });
+});
 function abrirTab(evt, nombreTab) {
     let tabcontent = document.getElementsByClassName("tabcontent");
     let tablinks = document.getElementsByClassName("tablink");
