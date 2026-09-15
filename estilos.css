@@ -290,7 +290,19 @@ padding-left: 15px;
     margin-bottom: 15px;
     border-left: 5px solid #ffcc00;
 	border-radius: 8px;
-	display: inline-block;
+	display: block;             /* Vuelve a ser un bloque para controlar bien los márgenes */
+    width: min-content;         /* Se encoge estrictamente al tamaño mínimo de su hijo más grande */
+    min-width: 280px;           /* Evita que se encoja demasiado en pantallas ultra pequeñas */
+    max-width: 100%;            /* Evita que el recuadro se salga de la pantalla en móviles */
+    box-sizing: border-box;     /* Asegura que los paddings no sumen tamaño extra */
+}
+/* 🌟 Controlar la imagen internamente */
+.evento_destacado img {
+    display: block;
+    width: 100%;                /* Ocupará el 100% del ancho que le asignemos abajo */
+    height: auto;               /* Mantiene la proporción de la imagen sin deformarla */
+    width: clamp(300px, 25vw, 450px); /* 🚀 Fluida: mínimo 200px, ideal 25% de la pantalla, máximo 350px */
+    max-width: 100%;            /* No permite que la imagen sea más grande que el móvil */
 }
 
 /* GALERÍA */
