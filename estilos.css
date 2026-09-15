@@ -292,7 +292,7 @@ padding-left: 15px;
 	border-radius: 8px;
 	display: block;             /* Vuelve a ser un bloque para controlar bien los márgenes */
     width: min-content;         /* Se encoge estrictamente al tamaño mínimo de su hijo más grande */
-    min-width: 280px;           /* Evita que se encoja demasiado en pantallas ultra pequeñas */
+    min-width: 300px;           /* Evita que se encoja demasiado en pantallas ultra pequeñas */
     max-width: 100%;            /* Evita que el recuadro se salga de la pantalla en móviles */
     box-sizing: border-box;     /* Asegura que los paddings no sumen tamaño extra */
 }
