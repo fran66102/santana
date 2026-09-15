@@ -93,7 +93,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="eventos" class="tabcontent">
     <h2>📅 Hurrengoa</h2>
     <div class="evento_destacado">
-	<img src="img/kartela_bazkaria.png" alt="Bazkariaren kartela">
+	<img src="img/kartela_bazkaria.png" alt="Cartel de la comida" onclick="abrirImagen(this.src)" 
+             style="cursor: pointer;">
     </div>
 
     <h2>📅 Ekitaldiak</h2>
@@ -413,6 +414,35 @@ window.addEventListener('load', function() {
 });
 </script>
 	
+<!-- Estructura del modal/lightbox que usará tu CSS existente -->
+<div id="miLightbox" class="lightbox" onclick="cerrarImagen()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <!-- Botón para cerrar -->
+        <div class="controls">
+            <button class="btn" onclick="cerrarImagen()"><span>&times;</span></button>
+        </div>
+        <!-- Imagen que se abrirá en grande -->
+        <img id="imagenGrande" src="" alt="Cartel ampliado" style="width: 500px; max-width: 90vw; height: auto;">
+    </div>
+</div>
+<script>
+function abrirImagen(ruta) {
+    // Asignamos la ruta de la imagen al contenedor grande
+    document.getElementById('imagenGrande').src = ruta;
+    // Mostramos el modal usando la clase .show de tu CSS
+    document.getElementById('miLightbox').classList.add('show');
+}
+
+function cerrarImagen() {
+    // Ocultamos el modal quitando la clase .show
+    document.getElementById('miLightbox').classList.remove('show');
+}
+
+// Opcional: Permitir cerrar el modal presionando la tecla Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') cerrarImagen();
+});
+</script>
 
 </body>
 </html>
