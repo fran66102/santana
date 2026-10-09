@@ -68,32 +68,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="contenedor-responsivo">
     <div class="columna1">
         <h3>🧑‍🤝‍🧑 Azken bilera</h3>
-		<canvas id="pdf-canvas"></canvas>
-
-https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.8.69/pdf.min.jsscript>
-
-<script>
-pdfjsLib.getDocument('aktak/akta_bilera_0610.pdf').promise.then(function(pdf) {
-    pdf.getPage(1).then(function(page) {
-
-        var scale = 1.5;
-        var viewport = page.getViewport({ scale: scale });
-
-        var canvas = document.getElementById('pdf-canvas');
-        var context = canvas.getContext('2d');
-
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        page.render({
-            canvasContext: context,
-            viewport: viewport
-        });
-    });
-});
-</script>
-	
-	        
+		<p><a href="aktak/akta_bilera_0610.pdf" target="_blank"><b>Acta de la última reunión</b></a></p>	        
 		<p><strong>Fecha:</strong> 06/10/2026</p>
 
     </div>
